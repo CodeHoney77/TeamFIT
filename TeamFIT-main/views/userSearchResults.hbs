@@ -1,0 +1,81 @@
+<div class="grid-container justify-content-center">
+    <div class="grid-item size-12@p size-11@l">
+        <div class="grid-container justify-content-center">
+            
+            {{!-- User search header --}}
+            <div class="grid-item size-12@p size-12@l">
+                <h1 class="text-align-center text-big-header">Search for other Users!</h1>
+            </div>
+
+            {{!-- Search bar --}}
+            <div style="padding-left:0; padding-right:0;" class="grid-item size-12@p size-12@l search full-width">
+                <form action="#">
+                    <input name="u" type="text" value="{{query}}" style="max-width: 100%; width: 100%-60px;"/>
+                    <button type="submit">
+                        <img src="../icons/search.svg" alt="Search"/>
+                    </button>
+                </form>
+            </div>
+
+            {{!-- Horizontal Line --}}
+            <div class="grid-item size-12@p size-12@l horizontal-line"></div>
+
+            {{!-- Showing results for header --}}
+            <div style="position:relative; left:-15px;" class="grid-item size-12@p size-12@l">
+                <h1 style="margin-top:0;">Showing results for "{{query}}"</h1>
+            </div>
+            
+            {{!-- List search results --}}
+            <div style="position:relative; left:-30px;" class="grid-item size-12@p size-12@l">
+
+                {{!-- There are books to display in search results --}}
+                {{#if users.length}}
+                    {{#each users}} 
+                        <div class="grid-container">
+                            <div style="padding-top:0;" class="justify-content-center grid-item book-item">
+                                <a href="/profilePage/{{_id}}"><img class="circle-display-large" src="{{this.image}}" onerror="this.src='../../icons/profilepictureplaceholder.png';" alt="Profile Picture"/></a>
+                            </div>
+
+                            {{!-- User Info (for laptop) --}}
+                            <div class="grid-item visible-flex@l hidden@p text-beside-book-cover align-bottom-parent">
+                                <div style="padding-top:0;" class="padding-large">
+                                    <a href="/profilePage/{{this._id}}">
+                                        <h2>{{this.username}}</h2>
+                                        <br>
+                                        <p>Bio: {{this.bio}}</p>
+                                        <p>Friends: {{this.friends.length}}</p>
+                                    </a>
+                                </div>
+                            </div>
+
+                            {{!-- Book Info (for phone) --}}
+                            <div class="grid-item visible-flex@p hidden@l size-12@p full-width" style="padding-top: 0px;">
+                                <a href="/profilePage/{{this._id}}">
+                                    <h2>{{this.username}}</h2>
+                                    <p>Bio: {{this.bio}}</p>
+                                </a>
+                            </div>
+
+                            {{!-- Horizontal Line thin --}}
+                            <div style="position:relative; left:15px;" class="grid-item size-12@p size-12@l horizontal-line-thin"></div>
+                            
+                        </div>
+                    {{/each}}
+
+                {{!-- If no books, show book not found --}}
+                {{else}}
+                
+                    {{!-- Spacer --}}
+                    <div class="grid-item size-12@p size-12@l"></div>
+
+                    {{!-- Book not found --}}
+                    <div class="grid-item size-12@p size-12@l">
+                        <h1 class="text-align-center">No users found</h1>
+                    </div>
+                    
+                {{/if}}
+            </div>
+
+        </div>
+    </div>
+</div>

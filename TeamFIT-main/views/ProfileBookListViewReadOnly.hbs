@@ -1,0 +1,54 @@
+<div class="grid-container justify-content-center">
+    <div class="grid-item size-12@p size-11@l">
+        <div class="grid-container justify-content-center">
+
+            {{!-- Book List Header --}}
+            <div class="grid-item size-12@p size-12@l">
+                <h1 class="text-align-center text-big-header">{{user.username}}'s Book List</h1>
+            </div>
+            <div class="grid-item size-12@p size-12@l horizontal-line"></div>
+
+            {{!-- Table of Books --}}
+            <table style="width: 100%;">
+                {{!-- Header --}}
+                <tr>
+                    <th>Book Cover</th>
+                    <th>Book Title</th>
+                    <th>Book Author</th>
+                    <th>Tags</th>
+                    <th>Rating</th>
+                    <th>Status</th>
+                    <th>Progress</th>
+                </tr>
+                {{!-- Data --}}
+                {{#each books}}
+                    <tr>
+                        <td>
+                            <div class="book-item book-item-small">
+                                <a href="/book/{{this.bookInfo._id}}">
+                                     <img src="{{this.bookInfo.image}}" alt="{{this.bookInfo.bookTitle}}" class="book-cover book-cover-small"/>
+                                </a>   
+                            </div>
+                        </td>
+                        <td>{{this.bookInfo.bookTitle}}</td>
+                        <td>{{this.bookInfo.author}}</td>
+                        <td>{{#each this.bookInfo.tags}}{{this.tag_name}}, {{/each}}</td>
+                        <td>{{this.bookInfo.averageRating}}</td>
+                        <td>{{this.readStatus}}</td>
+                        <td>
+                            {{this.chaptersRead}}/{{this.bookInfo.chapters}} Chapters
+                            {{this.pagesRead}}/{{this.bookInfo.pages}} Pages     
+                        </td>
+                    </tr>
+                {{/each}}
+            </table>
+
+        </div>
+
+        {{!-- Back Button --}}
+        <div class="grid-item size-12@p size-12@l text-align-right">
+            <button type="button" class="btn" onclick="history.back()">Back</button>
+        </div>
+        
+    </div>
+</div>

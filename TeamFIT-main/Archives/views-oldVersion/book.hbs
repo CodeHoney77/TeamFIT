@@ -1,0 +1,51 @@
+<!-- Entire Book Information -->
+<div class="bookDiv">
+    <!-- Book Cover Image -->
+    <div class="individualBookCoverDiv" ><img src = "{{book.image}}" height = "450" width = "300" alt=""></div>
+    
+    <!-- Book Details -->
+    <div class="bookInfo">
+
+        <!-- Book Title & Author-->
+        <h2>{{book.bookTitle}}</h2>
+        <h6>by {{book.author}}</h6>
+        <br>
+
+        <!-- Book Details Text Box-->
+        <h4>Synopsis</h4>
+        <div class="horizontal_line"></div>
+        <div class="bookInfoText ">
+            <p>{{book.description}}</p>
+            <p class="bookInfoTags .full-width">Tags: 
+                {{#each book.tags}}
+                <a href="/tags/{{this}}">{{this}}, </a>
+                {{/each}}
+            </p>
+            <p class="bookInfoRating .full-width">Rating: {{book.averageRating}}/10</p>
+        </div>
+    </div>
+
+</div>
+<div class="bookFeatures">
+    <br>
+    <!-- Links to switch between book details and the review page -->
+    <a href="/book/{{book._id}}" class="booklinks">Main Page</a>
+    <br>
+    <a href="/book/{{book._id}}/review" class="booklinks">Reviews({{numberOfReviews}})</a>
+    <br>
+    <br>
+    <form>
+        <select class="styled {{isHidden}}" name="readStatus" onchange="this.form.submit()">
+
+            {{#each readFuncStatus}}
+                <option value="{{this.key}}">{{this.val}}</option>
+            {{/each}}
+        </select>
+        
+    </form>
+    <br>
+    <br>
+    <h4>Chapters: {{book.chapters}}</h4>
+    <h4>Pages: {{book.pages}}</h4>
+
+</div>

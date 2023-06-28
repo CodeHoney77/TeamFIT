@@ -1,0 +1,80 @@
+<div class="grid-container justify-content-center">
+    <div class="grid-item size-12@p size-8@l">
+        <div class="grid-container justfy-content-center">
+
+            {{!-- Book Requests Header --}}
+            <div style="padding-bottom:0;"class="grid-item size-12@p size-12@l text-align-center">
+                <h1>Book Requests</h1>
+            </div>
+
+            {{!-- List of Requests --}}
+            <div style="padding-top:0;" class="grid-item size-12@p size-12@l">
+                {{#each requests}}
+                <div class="grid-container">
+
+                    {{!-- Spacer --}}
+                    <div class="grid-item size-12@p size-12@l"></div>
+
+                    {{!-- Line --}}
+                    <div class="grid-item size-12@p size-12@l horizontal-line"></div>
+
+                    {{!-- Image --}}
+                    <div style="position:relative; left:-15px;" class="grid-item book-item">
+                        <img src="{{this.image}}" alt="{{this.bookTitle}}" class="book-cover"/>
+                    </div>
+
+                    {{!-- Book Details (for laptop) --}}
+                    <div style="position:relative; left:-15px; top:-15px;" class="grid-item visible-flex@l hidden@p text-beside-book-cover align-bottom-parent">
+                        <div class="padding-large">
+                            <p class="text-bold">{{this.bookTitle}} by {{this.author}}</p>
+                            <p>From user: {{this.username}}</p>
+                            <p>Description: {{this.description}}</p>
+                            <p>CoverUrl link: <a href="https://{{this.image}}" target="_blank" class="color-primary">{{this.image}}</a></p>
+                            <p>Number of Chapters: {{this.chapters}}</p>
+                            <p>Number of Pages: {{this.pages}}</p>
+                        </div>
+                    </div>
+                
+                    {{!-- UNNECESSARY BUTTON???
+                    <a href=""><button class="btn margin-xxsmall">Approve request</button></a><br/>
+                    --}}
+                    <a href="/admin/removeBookReq/{{this._id}}"><button class="btn margin-xxsmall color-red">Remove request</button></a>
+
+                    {{!-- Book Details (for phone) --}}
+                    <div class="grid-item visible-flex@p hidden@l size-12@p">
+                        <div class="full-width">
+                            <p class="text-bold">{{this.bookTitle}} by {{this.author}}</p>
+                            <p>From user: {{this.username}}</p>
+                            <p>Description: {{this.description}}</p>
+                            <p>CoverUrl link: {{this.image}}</p>
+                            <p>Number of Chapters: {{this.chapters}}</p>
+                            <p>Number of Pages: {{this.pages}}</p><br/>
+                            <div class="align-right text-align-right">
+                                <a href=""><button class="btn margin-xxsmall">Approve request</button></a><br/>
+                                <a href="/admin/removeBookReq/{{this._id}}"><button class="btn margin-xxsmall color-red">Remove request</button></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    {{!-- Spacer --}}
+                    <div class="grid-item size-12@p size-12@l"></div>
+
+                </div>
+                {{/each}}
+                {{!-- Line --}}
+                <div class="grid-item size-12@p size-12@l horizontal-line"></div>
+            </div>
+
+            {{!-- Toggle between pages [TO DO] --}}
+            {{!-- <div class="grid-item size-12@p size-12@l text-align-center">
+                <p>&lt; &nbsp;&nbsp;&nbsp; Page 1 &nbsp;&nbsp;&nbsp; &gt;</p>
+            </div> --}}
+
+            {{!-- Back Button --}}
+            <div class="grid-item size-12@p size-12@l text-align-right">
+                <button class="btn" onclick="history.back()">Back</button>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,118 @@
+<div style="padding-top:30px;" class="grid-container justify-content-center">
+    <div class="grid-item size-12@p size-11@l">
+        <div class="grid-container justify-content-center">
+
+            {{!-- Spacer (left) --}}
+            <div class="grid-item visible-flex@l hidden@p size-1@l"></div>
+
+            {{!-- [1] Username + Profile Pic + Add/Remove Friend buttons --}}
+            <div class="grid-item size-12@p size-2@l text-align-center">
+                <h1 style="margin-top:0; padding-bottom: 15px;" >{{user.username}}</h1>
+                <img class="circle-display" src="{{user.image}}" onerror="this.src='../../icons/profilepictureplaceholder.png';" alt="Profile Picture"/>
+                <a href="/editProfile"><button type="button" class="btn btn-primary full-width margin-top-xsmall">Edit Profile</button></a>
+                <a href="/logout"><button class="btn btn-red full-width margin-top-xsmall">Logout</button></a>
+            </div>
+
+            {{!-- [2] Bio + Liked Genre--}}
+            <div class="grid-item size-12@p size-6@l">
+                <h3 class="textbox text-align-center color-white color-bg-dark-grey no-margin-top" style="font-size: 1.1em;">Bio</h3>
+                <textarea style="resize: none;" name="bio" class="readonly-input text-medium" rows="12" readonly>{{{user.bio}}}</textarea>
+                <p class="textbox text-align-center">Favourite Genre: <a href="/tagPage/{{user.fav_genre.tag_id}}">{{user.fav_genre.tag_name}}</a></p>
+            </div>
+
+            {{!-- [3] Favourite Book --}}
+            <div class="grid-item size-12@p size-2@l">
+                <h3 class="textbox text-align-center color-white color-bg-dark-grey no-margin-top" style="font-size: 1.1em;">Favourite Book</h3>
+                <a href="/book/{{favBook._id}}">
+                    <img src="{{favBook.image}}" alt="{{favBook.bookTitle}}" style="margin-top:15px;" class="book-cover margin-top-xsmall" onerror="this.src='../../icons/placeholder.svg';"/>
+                </a>
+            </div>
+
+            {{!-- Spacer (right) --}}
+            <div class="grid-item visible-flex@l hidden@p size-1@l"></div>
+
+            {{!-- Spacers --}}
+            <div class="grid-item size-12@p size-12@l"></div>
+            <div class="grid-item visible-flex@l hidden@p size-12@l"></div>
+
+
+            {{!-- Spacer (left) --}}
+            <div class="grid-item visible-flex@l hidden@p size-1@l"></div>
+
+            {{!-- [4] Friends List --}}
+            <div style="padding-top:0;" class="grid-item size-12@p size-2@l">
+                <div class="text-align-center no-margin-top padding-xsmall">
+                        <a href="/friendList"><button type="button" class="btn btn-primary full-width">Friends List</button></a>
+                </div>
+                {{#each friends}}
+                    <div style="padding-top:15px;" class="grid-container">
+                        <div class="grid-item size-4@p size-4@l padding-xsmall">
+                            <a href="/profilePage/{{_id}}"><img class="circle-display-xsmall" src="{{image}}" onerror="this.src='../../icons/profilepictureplaceholder.png';" alt="Profile Picture"/></a>
+                        </div>
+                        <div style="padding-left:12px;" class="grid-item size-8@p size-8@l padding-xsmall">
+                            <a href="/profilePage/{{_id}}"><p>{{username}}</p></a>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+
+            {{!-- Spacer (for phone) --}}
+            <div class="grid-item visible-flex@p hidden@l size-12@p"></div>
+
+            {{!-- [5] Book Stats --}}
+            <div style="padding-top:0;" class="grid-item size-12@p size-4@l border-thin-left-right">
+                <div class="grid-container">
+                    <div class="grid-item size-5@p size-5@l padding-xsmall">
+                        <h3 class="textbox text-align-center color-white color-bg-dark-grey padding-small no-margin-top" style="font-size: 1.1em;">Book Stats</h3>
+                    </div>
+                    <div class="grid-item size-7@p size-7@l padding-xsmall">
+                        <a href="/profileBookList/"><button type="button" class="btn btn-primary full-width">View Book List</button></a>
+                    </div>
+                    <div style="display:flex;"class="grid-item size-8@p size-7@l padding-xsmall">
+                        <ul class="no-bullet">
+                            <li class="blue offset-bullet">Reading: </li>
+                            <li class="green offset-bullet">Completed: </li>
+                            <li class="red offset-bullet">Plan to read: </li>
+                        </ul> 
+                        <ul class="no-bullet">
+                            <li class="offset-bullet">{{{stat.reading}}}</li>
+                            <li class="offset-bullet">{{{stat.completed}}}</li>
+                            <li class="offset-bullet">{{{stat.plan}}}</li>
+                        </ul> 
+                    </div>
+                </div>
+            </div>
+
+            {{!-- Spacer (for phone) --}}
+            <div class="grid-item visible-flex@p hidden@l size-12@p"></div>
+
+            {{!-- [6] Last Book Updates --}}
+            <div style="padding-top:0;" class="grid-item size-12@p size-4@l">
+                <div class="grid-container">
+                    <div class="grid-item size-12@p size-12@l padding-xsmall">
+                        <h3 class="textbox text-align-center color-white color-bg-dark-grey padding-small no-margin-top" style="font-size: 1.1em;">Last Book Reviews</h3>
+                    </div>
+
+
+                    {{#each output}}
+                        <div style="padding-top:30px;" class="grid-item padding-xsmall book-item book-item-small">
+                            <a href="/book/{{this.book._id}}">
+                                <img src="{{this.book.image}}" alt="Sample Book 1" class="book-cover book-cover-small"/>
+                            </a>
+                        </div>
+                        <div style="padding-top:30px; padding-left:15px;" class="grid-item padding-xsmall text-beside-book-cover-small">
+                            <a href="/book/{{this.book._id}}">{{this.book.bookTitle}}</a>
+                            <p class="text-small">{{dateDifference this.review.timestamp}}</p>
+                            <p class="text-small">Review:</p>
+                            <p class="text-small">{{this.review.reviewText}}</p>
+                        </div>
+                    {{/each}}
+                </div>
+            </div>
+
+            {{!-- Spacer (right) --}}
+            <div class="grid-item visible-flex@l hidden@p size-1@l"></div>
+
+        </div>
+    </div>
+</div>

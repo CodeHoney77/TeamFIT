@@ -1,0 +1,32 @@
+<div class="BooklistPage">
+
+
+    <table style="width:100%">
+        <tr>
+            <th>Book Cover</th>
+            <th style="width:50%">Book Title</th>
+            <th>Book Author</th>
+            <th>Genre</th>
+            <th>Rating</th>
+            <th>Status</th>
+            <th>Progress</th>
+        </tr>
+        {{#each books}}
+            <tr>
+                <th><img src="{{this.bookInfo.image}}" width="70px" height="100px" ></th>
+                <th>{{this.bookInfo.bookTitle}}</th>
+                <th>{{this.bookInfo.author}}</th>
+                <th>{{this.bookInfo.tags}}</th>
+                <th>{{this.bookInfo.averageRating}}</th>
+                <th>{{this.readStatus}}</th>
+                <th>
+                    <form>
+                        <input type="text" name="newChapterNumber_{{this.bookInfo._id}}" placeholder="{{this.chaptersRead}}" size="4">
+                    </form>
+                    /100 Chapters
+                </th>
+            </tr>
+        {{/each}}
+        
+    </table>
+</div>

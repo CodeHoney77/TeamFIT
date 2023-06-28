@@ -1,0 +1,139 @@
+<!-- {{{book}}} 
+
+-----------------------
+
+{{{book.id}}}
+
+{{{book.book_name}}}
+
+{{{book.book_desc}}} -->
+<script>
+    function updateCoverImg() {
+        document.getElementById("tempCover").src = document.getElementById("coverUrl").value;
+    }
+</script>
+
+<form class="bookAddForm" action="#">
+    <div class="BookDiv">
+        <div class="individualBookCoverDiv" >
+            
+            <img id="tempCover" src = "{{book.coverUrl}}" height = "450" width = "300">
+            <label for="coverUrl">Cover Url: </label>
+            <input class="coverUrl" id="coverUrl" type="text", name="coverUrl" oninput="updateCoverImg()">
+            </div>
+        
+        <div class="BookInfo">
+            <h4>Title: <input type="text" name="bookTitle" placeholder="Enter book title" required maxlength="255"></h2>
+            <br>
+            <h4>Author: <input type="text" name="bookAuthor" placeholder="Enter book author" required maxlength="255"></h2>
+            <br>
+            <h4>Synopsis</h4>
+            <div class="horizontal_line"></div>
+
+            <div class="BookInfoText">
+                <p><textarea class="bookDescription" name="bookDescription" placeholder="Enter a description for the book..." required maxlength="512"></textarea></p>
+                <!-- RATING IS NOT SET TO ABSOLUTE BOTTOM???!? -->
+            </div>
+        </div>
+
+    </div>
+    <div class="BookFeatures">
+
+        <br>
+            <!-- MISSING DATA IN DATABASE -->
+        <h4>Chapters: &nbsp;<input type="text" name="bookChapters" placeholder="" required maxlength="4"></h4>
+        <h4>Pages: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="bookPages" placeholder="" required maxlength="10"></h4>
+
+    </div>
+    <br><br>
+    <button type="submit" class="bookAddButton">Add book to database</button>
+</form>
+
+
+
+{{!-- GRID SYSTEM (NEW) --}}
+<script>
+    function updateCoverImg() {
+        document.getElementById("tempCover").src = document.getElementById("coverUrl").value;
+    }
+</script>
+
+<div class="grid-container justify-content-center">
+    <div class="grid-item size-12@p size-11@l">
+        <form action="#">
+            <div class="grid-container justify-content-center">
+
+                {{!-- Book Cover image --}}
+                <div class="grid-item size-12@p size-3@l">
+                    <div class="book-item" style="padding: 0px; padding-bottom: 5px;">
+                        <img id="tempCover" src="{{book.coverUrl}}" alt="Book Cover" class="book-cover"/>
+                    </div>
+                    <label for="coverUrl">Book Cover Url: </label>
+                    <input name="coverUrl" id="coverUrl" type="text" oninput="updateCoverImg()" required />
+                </div>
+
+                {{!-- Book Info fields --}}
+                <div class="grid-item size-12@p size-9@l">
+                    <label>Book Title:</label>
+                    <input name="bookTitle" type="text" maxlength="255" required />
+                    <div class="grid-item size-12@l"></div>
+
+                    <label>Author:</label>
+                    <input name="bookAuthor" type="text" maxlength="255" required />
+                    <div class="grid-item size-12@l"></div>
+
+                    <label>Synopsis:</label>
+                    <textarea name="bookDescription" placeholder="Enter a description for the book..." maxlength="512" rows="6" required ></textarea>
+                    <div class="grid-item size-12@l"></div>
+
+                    {{!-- Originally don't have "Bookseller Link" field for admin bookAdd, not sure if want to include --}}
+                    {{!-- <label>Bookseller Link:</label>
+                    <input name="booksellerLink" type="text" maxlength="255" required />
+                    <div class="grid-item size-12@l"></div> --}}
+
+                    <!-- RATING IS NOT SET TO ABSOLUTE BOTTOM???!? -->
+
+                    {{!-- Book Features fields --}}
+                    <div class="grid-container">
+                        <!-- MISSING DATA IN DATABASE -->
+                        <div class="grid-item size-12@p size-6@l inline-label-input">
+                            <label>Chapters:&nbsp;&nbsp;</label>
+                            <input name="bookChapters" type="text" maxlength="4" required />
+                        </div>
+                        {{!-- Pages field (for laptop) --}}
+                        <div class="grid-item visible-flex@l hidden@p size-12@p size-6@l inline-label-input">
+                            <label>Pages:&nbsp;&nbsp;</label>
+                            <input name="bookPages" type="text" maxlength="10" required />
+                        </div>
+                        {{!-- Pages field (for phone) --}}
+                        <div class="grid-item visible-flex@p hidden@l size-12@p size-6@l inline-label-input">
+                            <label>Pages:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                            <input name="bookPages" type="text" maxlength="10" required />
+                        </div>
+                    </div>
+
+                </div>
+
+                {{!-- Add button --}}
+                <div class="grid-item size-12@p size-12@l text-align-right">
+                    <button class="btn btn-large btn-secondary" type="submit">Add book to database</button>
+                </div>
+
+            </div>
+        </form>
+
+        {{!-- Spacer --}}
+        <div class="grid-item size-12@p size-12@l"></div>
+
+        {{!-- Back Button --}}
+        <div class="grid-item size-12@p size-12@l text-align-right">
+            <button class="btn" onclick="history.back()">Back</button>
+        </div>
+        
+    </div>
+</div>
+
+<!-- {{{book}}} 
+{{{book.id}}}
+{{{book.book_name}}}
+{{{book.book_desc}}} -->

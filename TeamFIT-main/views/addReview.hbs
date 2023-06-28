@@ -1,0 +1,65 @@
+
+
+<div class="grid-container justify-content-center">
+    <div style="padding-top: 75px;"class="grid-item size-12@p size-11@l">
+        {{!-- Add a book header --}}
+        <div class="grid-item size-12@p size-12@l">
+            <h1 class="text-align-center text-big-header">Add a Review</h1>
+        </div>
+        <div class="grid-item size-12@p size-12@l horizontal-line"></div>
+
+        <form action="#">
+            <div class="grid-container justify-content-center">
+
+                <div style="padding-right:0;" class="grid-item size-12@p size-12@l">
+                    {{!-- Dropbox for reading status --}}
+                    <label for="readingStatus">Is your List up-to-date? </label>
+                    <select name="readingStatus" id="readingStatus">
+                        <option value="reading">Reading</option>
+                        <option value="plan to read">Plan to Read</option>
+                        <option value="completed">Completed</option>
+                    </select>
+                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    <span>
+                        <input class ="size-half@p size-half@l"name="newChapterNumber" type="text" placeholder="{{book.chaptersRead}}"/>
+                        /{{book.chapters}} Chapters
+                    </span>
+                    <span>
+                        <input class ="size-half@p size-half@l"name="newPageNumber" type="text" placeholder="{{book.pagesRead}}"/>
+                        /{{book.pages}} Pages
+                    </span>
+                </div>
+
+
+
+
+
+                {{!-- Review Info fields --}}
+                <div style="padding-right:0;" class="grid-item size-12@p size-12@l">
+                    <b>Review Text</b>   <span style="color: #712d0e">(Required)</span> 
+                    <textarea style="resize: none;" name="reviewText" placeholder="Enter your review..." maxlength="512" rows="6" required ></textarea>
+                    <div class="grid-item size-12@l"></div>
+                        <b>Overall Rating</b> <span style="color: #712d0e">(Required)</span> 
+                        <input name="rating" type="Number" placeholder="Enter your rating from 1-10"maxlength="2" required />
+                    </div>
+
+                </div>
+            </div>
+
+            {{!-- Spacer and Horizontal Line --}}
+            <div class="grid-item size-12@l"></div>
+            <div class="grid-item size-12@p size-12@l horizontal-line"></div>
+
+            {{!-- Add button --}}
+            <div style="padding-right:0;" class="grid-item size-12@p size-12@l text-align-right">
+                <button type="submit" onclick="location.href = 'http://localhost:3000/book/{{book._id}}/review'" class="btn btn-large btn-secondary">Add Review</button>
+            </div>
+        </form>
+
+        {{!-- Back Button --}}
+        <div style="padding-right:0;" class="grid-item size-12@p size-12@l text-align-right">
+            <button type="button" class="btn" onclick="history.back()">Back</button>
+        </div>
+        
+    </div>
+</div>

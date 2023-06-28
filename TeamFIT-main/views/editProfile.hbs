@@ -1,0 +1,57 @@
+<script>
+    function updateProfileImg() {
+        document.getElementById("tempProfile").src = document.getElementById("imageUrl").value;
+    }
+</script>
+
+
+<div class="grid-container justify-content-center">
+    <div style="padding-top: 75px;"class="grid-item size-12@p size-11@l">
+        {{!-- Edit Profile header --}}
+        <div class="grid-item size-12@p size-12@l">
+            <h1 class="text-align-center text-big-header">Edit Profile</h1>
+        </div>
+        <div class="grid-item size-12@p size-12@l horizontal-line"></div>
+
+        <form class="bookAddForm" action="#">
+            <div class="grid-container">
+
+                {{!-- Profile Picture --}}
+                <div class="grid-item size-12@p size-3@l">
+                    <label for="imageUrl">Profile Picture: </label>
+                    <input class="imageUrl" id="imageUrl" placeholder="Enter image URL" type="url" name="imageUrl" oninput="updateProfileImg()"/>
+                    <a href="/editProfile?dpfp=y"><button style="margin-top:15px;" type="button" class="btn btn-large color-red">Delete Profile Picture</button></a>
+                    <img id="tempProfile" style="padding-top:15px;" class="circle-display-xlarge" src="{{user.image}}" onerror="this.src='../../icons/profilepictureplaceholder.png';" alt="Profile Picture"/>
+                </div>
+
+                {{!-- Edit Bio, Favourite Genre and Book --}}
+                <div class="grid-item size-12@p size-9@l">
+                    <label>Bio: </label>
+                    <textarea style="resize: none;" name="bio" class="readonly-input text-medium" rows="12">{{user.bio}}</textarea>
+                    <div style="padding:5px;"class="grid-item size-12@l"></div>
+                    <label>Favourite Genre:&nbsp;&nbsp;</label>
+                    <input name="favGenre" value="{{user.fav_genre.tag_name}}" type="text"/>
+                    <div style="padding:5px;"class="grid-item size-12@l"></div>
+                    <label>Favourite Book:&nbsp;&nbsp;</label>
+                    <input name="favBook" value="{{user.fav_book.book_name}}" type="text"/>
+                </div>
+
+            </div>
+
+            {{!-- Spacer and Horizontal Line --}}
+            <div class="grid-item size-12@l"></div>
+            <div class="grid-item size-12@p size-12@l horizontal-line"></div>
+
+            {{!-- Save Profile button --}}
+            <div style="padding-right:0;" class="grid-item size-12@p size-12@l text-align-right">
+                <button type="submit" class="btn btn-large btn-secondary">Save Profile</button>
+            </div>
+        </form>
+
+        {{!-- Back Button --}}
+        <div style="padding-right:0;" class="grid-item size-12@p size-12@l text-align-right">
+            <button type="button" class="btn" onclick="history.back()">Back</button>
+        </div>
+        
+    </div>
+</div>

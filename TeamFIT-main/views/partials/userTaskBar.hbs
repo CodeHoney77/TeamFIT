@@ -1,0 +1,97 @@
+<script>
+    $(document).on("keypress", "input", function(e){
+        if(e.which == 13){
+            var inputVal = $(this).val();
+            alert("You've entered: " + inputVal);
+        }
+    });
+</script>
+
+<script>
+    // Function to toggle between dark and light mode
+   const setTheme = (theme) => {
+        document.documentElement.className = theme;
+        localStorage.setItem('theme', theme);
+    }
+
+    // Loads the current theme
+    const getTheme = () => {
+        const theme = localStorage.getItem('theme');
+        theme && setTheme(theme);
+    }
+    getTheme();
+</script>
+
+
+<header> <!-- This is the toolbar at the top --> 
+
+    <!-- Laptop userTaskBar -->
+    <div class="visible-flex@l hidden@p full-height">
+
+        <!-- TaskBar items -->
+        <ul id="nav_bar">
+            <li><a href="/"><img src="../../icons/logo.svg" alt="MyBookList"/></a></li>
+            <li><a href="/tagListPage?ts=#">Tags</a></li>
+            <li><a href="/recent">Recent</a></li>
+            <li><a href="/admin">Admin</a></li>
+            <li><a href="/userSearchResults?u=#">Users</a></li>
+             {{!-- <li><a href="/help">Help</a></li> --}}
+        </ul>
+
+        <!-- Search bar and Profile right align -->
+        <div class="search">
+            <form action="#">
+                <input name="s" type="text" placeholder="Search..."/>
+                <button type="submit">
+                    <img src="../../icons/search.svg" alt="Search"/>
+                </button>
+            </form>
+            
+            <a href="/profilePage">
+                <img src="../../icons/userIcon.svg" alt="Profile Page"/>
+            </a>
+
+            <div class="toggle-container">
+                 <button class="theme-btn light" onclick="setTheme('light')">
+                    <img src="../../icons/moon.svg" alt="Profile Page"/>
+                </button>
+                <button class="theme-btn dark" onclick="setTheme('dark')">
+                    <img src="../../icons/sun.svg" alt="Profile Page"/>
+                </button>                   
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Button for Phone userTaskBar -->
+    <button id="sidebar-button" class="btn-icon hidden@l visible@p"><i class="material-icons">menu</i></button>
+
+</header>
+
+
+<!-- Phone userTaskBar -->
+<div id="main_sidebar">
+    <div class="panel-sidebar">
+
+        <!-- TaskBar items -->
+        <ul class="panel-sidebar-menu">
+            <li><a href="/"><img src="../../icons/logo.svg"/></a></li>
+            <li><a href="/searchResults">Books</a></li>
+            <li><a href="/recent">Recent</a></li>
+            <li><a href="/admin">Admin</a></li>
+            {{!-- <li><a href="/help">Help</a></li> --}}
+        </ul>
+
+        <!-- Search bar and Profile -->
+        <div class="panel-sidebar-menu">
+            <a href="/searchResults?s=#">
+                <img src="../../icons/search.svg" alt="Search"/>
+            </a>
+            <a href="/profilePage">
+                <img src="../../icons/userIcon.svg" alt="Profile Page"/>
+            </a>
+        </div>
+
+    </div>
+</div>
+    

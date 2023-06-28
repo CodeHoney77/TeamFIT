@@ -1,0 +1,125 @@
+    <div>
+        {{!-- <div class="leftpane"></div> --}}
+        <div class="middlepane padPageRight">
+
+            <div class="topside">
+
+                <div class="topside1">
+                <p class= "">{{user.username}}</p>
+                <img class="" src="https://www.personality-insights.com/wp-content/uploads/2017/12/default-profile-pic-e1513291410505.jpg" width="250px" height="250px">
+                
+                <button class="Same   button1" >Add Friend</button>
+                
+                <button class="Same  button1">Remove Friend</button>
+                
+                </div>
+
+                <div class="topside2">
+                <textarea class = "" name = "bio" cols="75"rows="14" >HELLO I LIKE BOOKS!</textarea>
+                        <button class ="  ">Liked Genries: Sci-Fi, Fiction, Comedy</button>
+
+                </div>
+                
+                <div class="topside3">
+
+                <button class ="favouriteBookButton button button1">Favourite Book</button></p>
+               
+                <img class="favouriteBookImage" src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1348663428i/7549835.jpg" width="200px" height="250px">
+
+                </div>
+                
+                
+                <br>
+
+      
+
+            </div>
+
+        <br>
+        
+        <div class="profileBottom">
+
+            <div class="profileBottom1">
+            <p>Friends List</p>
+                                    <br>
+
+
+            <ul class = "Same pad">
+                {{#each user.friends}}
+                    <li class="itemPad"><img src="https://www.personality-insights.com/wp-content/uploads/2017/12/default-profile-pic-e1513291410505.jpg" width="50px" height="50px"> {{username}} </li>
+                {{/each}}
+
+                {{!-- <li class="itemPad"><img src="https://www.personality-insights.com/wp-content/uploads/2017/12/default-profile-pic-e1513291410505.jpg" width="50px" height="50px">  Username2</li>
+                <li class="itemPad"><img src="https://www.personality-insights.com/wp-content/uploads/2017/12/default-profile-pic-e1513291410505.jpg" width="50px" height="50px">  Username3</li>
+                <li class="itemPad"><img src="https://www.personality-insights.com/wp-content/uploads/2017/12/default-profile-pic-e1513291410505.jpg" width="50px" height="50px">  Username4</li> --}}
+           </ul>
+        
+            </div>
+            <div class="profileBottom2">
+
+                    <p class="Same">Book Stats</p>
+                    <p class="Same"></p>                    
+                    <p class="Same" > <a href="/profileBookList/">View Book List</a></p>
+                                            <br>
+                        <br>
+
+
+        {{!-- <hr style="width:70%;text-align:left;margin-left:400px"> --}}
+
+                    {{!-- <div></div> --}}
+                    <ul class = "Same bookPad">
+                            <li class="dot2 itemPad">Books reading</li>
+                            <li class="dot3 itemPad">Books completed</li>
+                            <li class="dot itemPad">Plan to read</li>
+                        </ul>
+                        
+       <ul class = "Same bookPadNum">
+            <li class="itemPad">3</li>
+            <li class="itemPad">31</li>
+            <li class="itemPad">8</li>
+        </ul>
+
+            </div>
+
+            <div class="profileBottom3"> 
+                <p>Last Book Updates</p>
+                                        <br>
+                                        
+
+                <div></div>
+                        <div>
+                        <img src="https://www.personality-insights.com/wp-content/uploads/2017/12/default-profile-pic-e1513291410505.jpg" width="60px" height="75px" />
+                        <br>
+                        <p>Book1</p>
+                        <p>1 Hour ago</p>
+                        <p>Reading 64/89 - Scored 7</p>
+                                                <br>
+
+                          </div>
+                                                  <div>
+                        <img src="https://www.personality-insights.com/wp-content/uploads/2017/12/default-profile-pic-e1513291410505.jpg" width="60px" height="75px" />
+                                                <br>
+
+                        <p>Book1</p>
+                        <p>1 Hour ago</p>
+                        <p>Reading 64/89 - Scored 7</p>
+                                                <br>
+
+                          </div>
+                                                  <div>
+                        <img src="https://www.personality-insights.com/wp-content/uploads/2017/12/default-profile-pic-e1513291410505.jpg" width="60px" height="75px" />
+                                                <br>
+
+                        <p>Book1</p>
+                        <p>1 Hour ago</p>
+                        <p>Reading 64/89 - Scored 7</p>
+                          </div>
+            </div>    
+     
+        
+
+
+            </div>
+        </div>
+        {{!-- <div class="rightpane"></div> --}}
+      </div>

@@ -1,0 +1,41 @@
+<div class="grid-container justify-content-center">
+    <div class="grid-item size-12@p size-11@l">
+        <div class="grid-container justify-content-center">
+
+            {{!-- User search header --}}
+            <div class="grid-item size-12@p size-12@l">
+                <h1 class="text-align-center text-big-header">Search for books by their tag!</h1>
+            </div>
+
+            {{!-- Search bar --}}
+            <div style="padding-left:0; padding-right:0;" class="grid-item size-12@p size-12@l search full-width">
+                <form action="#">
+                    <input name="ts" type="text" value="{{query}}" style="max-width: 100%; width: 100%-60px;"/>
+                    <button type="submit">
+                        <img src="../icons/search.svg" alt="Search"/>
+                    </button>
+                </form>
+            </div>
+
+            {{!-- Horizontal Line --}}
+            <div class="grid-item size-12@p size-12@l horizontal-line"></div>
+
+            {{!-- Showing results for header --}}
+            <div style="position:relative; left:-15px;" class="grid-item size-12@p size-12@l">
+                <h1 style="margin-top:0;">Showing results for "{{query}}"</h1>
+            </div>
+            
+            {{!-- List search results --}}
+            <div style="padding:0;"class="grid-item size-12@p size-12@l">
+                <div style="justify-content:space-between; width:calc(100% + 10px);" class="grid-container">
+                    {{#each tags}}
+                        <div style="padding-left:0; flex-direction:column; position:relative;" class="grid-item book-item">
+                            <a href="/tagPage/{{this._id}}">{{this.tag}}</a>
+                        </div>
+                    {{/each}}
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

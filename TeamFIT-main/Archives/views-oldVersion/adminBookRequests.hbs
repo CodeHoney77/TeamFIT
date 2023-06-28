@@ -1,0 +1,15 @@
+<h1 class="text-align-center">Book requests</h1>
+
+<div class="adminBookRequestListDiv center">
+    {{#each requests}}
+    <div class="adminBookRequestItem">
+        <p class="text-bold">{{this.bookTitle}} by {{this.author}}</p>
+        <p>From user: {{this.username}}</p>
+        <p>Description: {{this.description}}</p>
+        <p>Bookseller link: {{this.booksellerLink}}</p>
+        <a href="/admin/removeBookReq/{{this._id}}"><p class="adminBookRequestRemove text-align-right"><br>Remove request</p></a>
+    </div>
+    {{/each}}
+</div>
+<p class="pageArrows text-align-center">&lt; &nbsp;&nbsp;&nbsp;Page 1&nbsp;&nbsp;&nbsp;></p>
+<a href="/admin"><p class="backButton text-align-right">Back</p></a>

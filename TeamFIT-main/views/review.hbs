@@ -1,0 +1,109 @@
+<div class="grid-container justify-content-center">
+    <div class="grid-item size-12@p size-11@l">
+        <div class="grid-container justify-content-center">
+
+            {{!-- Spacer (for laptop) --}}
+            <div class="grid-item visible-flex@l hidden@p size-12@p size-12@l"></div>
+
+            {{!-- Book Title and Author (for phone) --}}
+            <div class="grid-item visible-flex@p hidden@l size-12@p">
+                <div class="full-width">
+                    <h1 style="margin-top: 0;">{{book.bookTitle}}</h1>
+                    <h6>by {{book.author}}</h6>
+                </div>
+            </div>
+
+            {{!-- Book Cover image & mini menu & reading status & tags and rating --}}
+            <div class="grid-item book-item book-item-large">
+                
+                {{!-- Image --}}
+                <img src="{{book.image}}" alt="{{book.bookTitle}}" class="book-cover book-cover-large"/>
+                <div class="visible-flex@l hidden@p horizontal-line"></div>
+                <div class="visible-flex@p hidden@l horizontal-line-thin"></div>
+
+                {{!-- Links to switch between book details and the review page --}}
+                <a href="/book/{{book._id}}" class="color-primary"><p>Book Main Page</p></a>
+                <a href="/book/{{book._id}}/review" class="color-primary"><p>Reviews ({{numberOfReviews}})</p></a>
+                
+                {{!-- Reading Status --}}
+                <div class="grid-item size-12@p size-12@l"></div>
+                <form>
+                    <div class="select-dropdown full-width {{isHidden}}">
+                        <select name="readStatus" onchange="this.form.submit()">
+                            {{#each readFuncStatus}}
+                                <option value="{{this.key}}">{{this.val}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                </form>
+                <div class="visible-flex@l hidden@p horizontal-line margin-top-small"></div>
+                <div class="visible-flex@p hidden@l horizontal-line-thin margin-top-small"></div>
+
+                {{!-- Book Tags and Rating --}}
+                <p>Tags: 
+                    {{#each book.tags}}<td>
+                        <a href="/tags/{{this.tag_id}}">{{this.tag_name}}, </a>
+                    {{/each}}
+                </p>
+                {{#if (hasReview avgRating)}}
+                Rating: {{avgRating}}/10
+                {{else}}
+                Rating: None at the moment!
+                {{/if}}
+
+            </div>
+            
+            {{!-- Book Details (for laptop) --}}
+            <div class="grid-item visible-flex@l hidden@p text-beside-book-cover-large">
+                <div class="padding-large full-width">
+
+                    {{!-- Book Title and Author --}}
+                    <h1>{{book.bookTitle}}</h1>
+                    <h6>by {{book.author}}</h6>
+                    <br>
+
+                    {{!-- List of Book Reviews --}}
+                    <h3>Reviews<span></h3>
+                    <a href="/book/{{book._id}}/addReview" class="text-align-right text-small color-primary">+ Write a review</a>
+                    <div class="horizontal-line margin-top-small"></div>
+                    {{#each review}}
+                        <div class="grid-item size-12@p size-12@l textbox">
+                            <p>{{this.reviewText}}</p>
+                            <br>
+                            <p class="text-small">Reviewer's Rating: {{this.rating}}/10</p>
+                            <!-- [TODO] Need to be able to click a username and go to their profile-->
+                            <p class="text-small"><href>{{this.username}}</href> | {{dateFormat this.timestamp}}</p>
+                        </div>
+                        <div class="grid-item size-12@p padding-xsmall"></div>
+                    {{/each}}
+
+                </div>
+            </div>
+
+            {{!-- Book Details (for phone) --}}
+            <div class="grid-item visible-flex@p hidden@l size-12@p">
+                <div class="full-width">
+
+
+
+                    {{!-- List of Book Reviews --}}
+                    <h3>Reviews</h3>
+                    {{!-- Horizontal Line --}}
+                    <div class="horizontal-line margin-top-small"></div>
+                    {{#each review}}
+                        <div class="grid-item size-12@p size-12@l textbox">
+                            <p>{{this.reviewText}}</p>
+                            <br>
+                            <p class="text-small">Reviewer's Rating: {{this.rating}}/10</p>
+                            <!-- [TODO] Need to be able to click a username and go to their profile-->
+                            <p class="text-small"><href>{{this.username}}</href> | {{this.timestamp}}</p>
+                        </div>
+                        <div class="grid-item size-12@p padding-xsmall"></div>
+                    {{/each}}
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

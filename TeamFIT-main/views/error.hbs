@@ -1,0 +1,29 @@
+<input type = "hidden" id = "redirect" value = {{redirect}} />
+
+<script>
+    setTimeout(function(){
+    window.location.href = document.getElementById("redirect").value;
+    }, 1000);
+</script>
+
+<!-- Displays error message and then redirects back to home after 1 seconds -->
+<div class="grid-container justify-content-center">
+    <div class="grid-item size-12@p size-6@l">
+        <div class="grid-container justify-content-center">
+
+            {{!-- Error header --}}
+            <div class="grid-item size-12@p size-12@l">
+                <h1 class="text-align-center">{{error}}</h1>
+            </div>
+
+            {{!-- Spacer --}}
+            <div class="grid-item visible-flex@l hidden@p size-12@l"></div>
+
+            {{!-- Warning image --}}
+            <div class="grid-item size-8@p size-6@l">
+                <img src="../../icons/warning.svg" alt="Warning Symbol"/>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,89 @@
+<script>
+    function updateCoverImg() {
+        document.getElementById("tempCover").src = document.getElementById("coverUrl").value;
+    }
+</script>
+
+
+<div class="grid-container justify-content-center">
+    <div style="padding-top: 75px;"class="grid-item size-12@p size-11@l">
+        {{!-- Add a book header --}}
+        <div class="grid-item size-12@p size-12@l">
+            <h1 class="text-align-center text-big-header">Add a Book</h1>
+        </div>
+        <div class="grid-item size-12@p size-12@l horizontal-line"></div>
+
+        <form class="bookAddForm" action="#">
+            <div class="grid-container justify-content-center">
+
+                {{!-- Book Cover image --}}
+                <div style="padding-left:0;" class="grid-item size-12@p size-3@l">
+                    <div class="book-item" style="padding: 0px; padding-bottom: 15px;">
+                        <img id="tempCover" src="{{book.coverUrl}}" alt="Book Cover" onerror="this.src='../../icons/placeholder.svg';" class="book-cover"/>
+                    </div>
+                    <label for="coverUrl">Book Cover Url: </label>
+                    <input class="coverUrl" id="coverUrl" placeholder="Enter cover URL" type="text" name="coverUrl" oninput="updateCoverImg()"/>
+                </div>
+
+                {{!-- Book Info fields --}}
+                <div style="padding-right:0;" class="grid-item size-12@p size-9@l">
+                    <label>Book Title:</label>
+                    <input name="bookTitle" type="text" placeholder="Enter book title" maxlength="255" required />
+                    <div class="grid-item size-12@l"></div>
+                    <label>Author:</label>
+                    <input name="bookAuthor" type="text" placeholder="Enter author name"maxlength="800" required />
+                    <div class="grid-item size-12@l"></div>
+
+                    <label>Synopsis:</label>
+                    <textarea style="resize: none;" name="bookDescription" placeholder="Enter a description for the book..." maxlength="512" rows="6" required ></textarea>
+                    <div class="grid-item size-12@l"></div>
+
+                    {{!-- Originally don't have "Bookseller Link" field for admin bookAdd, not sure if want to include --}}
+                    {{!-- <label>Bookseller Link:</label>
+                    <input name="booksellerLink" type="text" maxlength="255" required />
+                    <div class="grid-item size-12@l"></div> --}}
+
+                    <!-- RATING IS NOT SET TO ABSOLUTE BOTTOM???!? -->
+
+                    {{!-- Book Features fields --}}
+                    <div class="grid-container">
+                        <div style="position:relative; left:-15px;" class="grid-item size-12@p size-6@l inline-label-input">
+                            <label>Chapters:&nbsp;&nbsp;</label>
+                            <input name="bookChapters" placeholder="Enter number of chapters" type="text" maxlength="4" required />
+                        </div>
+                        {{!-- Pages field (for laptop) --}}
+                        <div style="position:relative; left:15px;" class="grid-item visible-flex@l hidden@p size-12@p size-6@l inline-label-input">
+                            <label>Pages:&nbsp;&nbsp;</label>
+                            <input name="bookPages" placeholder="Enter number of pages" type="text" maxlength="10" required />
+                        </div>
+
+
+                        {{!-- Pages field (for phone)
+                        THIS SECTION WAS CAUSING THE BOOK ADD TO FAIL PREVIOUSLY
+                        <div class="grid-item visible-flex@p hidden@l size-12@p size-6@l inline-label-input">
+                            <label>Pages:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                            <input name="bookPages" placeholder="Enter number of pages" type="text" maxlength="10" required />
+                        </div>
+                        --}}
+                    </div>
+
+                </div>
+            </div>
+
+            {{!-- Spacer and Horizontal Line --}}
+            <div class="grid-item size-12@l"></div>
+            <div class="grid-item size-12@p size-12@l horizontal-line"></div>
+
+            {{!-- Add button --}}
+            <div style="padding-right:0;" class="grid-item size-12@p size-12@l text-align-right">
+                <button type="submit" class="btn btn-large btn-secondary">Add book to database</button>
+            </div>
+        </form>
+
+        {{!-- Back Button --}}
+        <div style="padding-right:0;" class="grid-item size-12@p size-12@l text-align-right">
+            <button type="button" class="btn" onclick="history.back()">Back</button>
+        </div>
+        
+    </div>
+</div>

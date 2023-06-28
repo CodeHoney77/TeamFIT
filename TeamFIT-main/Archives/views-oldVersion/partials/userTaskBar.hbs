@@ -1,0 +1,36 @@
+<script>
+    $(document).on("keypress", "input", function(e){
+        if(e.which == 13){
+            var inputVal = $(this).val();
+            alert("You've entered: " + inputVal);
+        }
+    });
+</script>
+
+<header> <!-- This is the toolbar at the top --> 
+
+<!-- TaskBar items -->
+    <ul id="nav_bar">
+        <li><a class="logo" href="/"><img src="../../icons/logo.svg"/></a></li>
+        <li><a href="/searchResults">Books</a></li>
+        <li><a href="/trending">Trending</a></li>
+        <li><a href="/recent">Recent</a></li>
+        <li><a href="/admin">Admin</a></li>
+    </ul>
+
+    <!-- Search bar and Profile right align -->
+    <div class="search">
+        <form action="#">
+            <input name="s" type="text" placeholder="Search...">
+            <button>
+                <img src="../../icons/search.svg"/>
+            </button>
+        </form>
+        
+        <a href="/profilePage">
+        <img class="userIcon"src="../../icons/userIcon.svg" alt="">
+        </a>
+
+    </div>
+
+</header>

@@ -1,0 +1,131 @@
+<div style="padding-top:30px;" class="grid-container justify-content-center">
+    <div class="grid-item size-12@p size-11@l">
+        <div class="grid-container justify-content-center">
+
+            {{!-- Spacer (left) --}}
+            <div class="grid-item visible-flex@l hidden@p size-1@l"></div>
+
+            {{!-- [1] Username + Profile Pic + Add/Remove Friend buttons --}}
+            <div class="grid-item size-12@p size-2@l text-align-center">
+                <h1 style="margin-top:0; padding-bottom: 15px;" >{{user.username}}</h1>
+                <img class="circle-display" src="{{user.image}}" onerror="this.src='../../icons/profilepictureplaceholder.png';" alt="Profile Picture"/>
+                <a href="/profilePage/{{this.id}}?af=y"><button class="btn btn-primary full-width margin-top-xsmall">Add Friend</button></a>
+                <a href="/profilePage/{{this.id}}?rf=y"><button class="btn btn-red full-width margin-top-xsmall">Remove Friend</button></a>
+            </div>
+
+            {{!-- [2] Bio + Liked Genres--}}
+            <div class="grid-item size-12@p size-6@l">
+                <h3 class="textbox text-align-center color-white color-bg-dark-grey no-margin-top" style="font-size: 1.1em;">Bio</h3>
+                <textarea style="resize: none;" name="bio" class="readonly-input text-medium" rows="12" readonly>{{{user.bio}}}</textarea>
+                
+                <p class="textbox text-align-center">Favourite Genre: <a href="/tagPage/{{user.fav_genre.tag_id}}">{{user.fav_genre.tag_name}}</a></p>
+            </div>
+
+            {{!-- [3] Favourite Book --}}
+            <div class="grid-item size-12@p size-2@l">
+                <h3 class="textbox text-align-center color-white color-bg-dark-grey no-margin-top" style="font-size: 1.1em;">Favourite Book</h3>
+                <a href="/book/{{favBook._id}}">
+                    <img src="{{favBook.image}}" alt="{{favBook.bookTitle}}" style="margin-top:15px;" class="book-cover margin-top-xsmall" onerror="this.src='../../icons/placeholder.svg';"/>
+                </a>
+            </div>
+
+            {{!-- Spacer (right) --}}
+            <div class="grid-item visible-flex@l hidden@p size-1@l"></div>
+
+            {{!-- Spacers --}}
+            <div class="grid-item size-12@p size-12@l"></div>
+            <div class="grid-item visible-flex@l hidden@p size-12@l"></div>
+
+
+            {{!-- Spacer (left) --}}
+            <div class="grid-item visible-flex@l hidden@p size-1@l"></div>
+
+            {{!-- [4] Friends List --}}
+            <div style="padding-top:0;" class="grid-item size-12@p size-2@l">
+                <div class="text-align-center no-margin-top padding-xsmall">
+                    <a href="/friendList/{{this.id}}"><button type="button" class="btn btn-primary full-width">Friends List</button></a>
+                </div>
+                {{#each friends}}
+                    <div style="padding-top:15px;" class="grid-container">
+                        <div class="grid-item size-4@p size-4@l padding-xsmall">
+                            <a href="/profilePage/{{_id}}"><img class="circle-display-xsmall" src="{{image}}" onerror="this.src='../../icons/profilepictureplaceholder.png';" alt="Profile Picture"/></a>
+                        </div>
+                        <div style="padding-left:12px;" class="grid-item size-8@p size-8@l padding-xsmall">
+                            <a href="/profilePage/{{_id}}"><p>{{username}}</p></a>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+
+            {{!-- Spacer (for phone) --}}
+            <div class="grid-item visible-flex@p hidden@l size-12@p"></div>
+
+            {{!-- [5] Book Stats --}}
+            <div style="padding-top:0;" class="grid-item size-12@p size-4@l border-thin-left-right">
+                <div class="grid-container">
+                    <div class="grid-item size-5@p size-5@l padding-xsmall">
+                        <h3 class="textbox text-align-center color-white color-bg-dark-grey padding-small no-margin-top" style="font-size: 1.1em;">Book Stats</h3>
+                    </div>
+                    <div class="grid-item size-7@p size-7@l padding-xsmall">
+                        <a href="/profileBookList/{{this.id}}"><button type="button" class="btn btn-primary full-width">View Book List</button></a>
+                    </div>
+                    <div style="display:flex;"class="grid-item size-8@p size-7@l padding-xsmall">
+                        <ul class="no-bullet">
+                            <li class="blue offset-bullet">Reading: </li>
+                            <li class="green offset-bullet">Completed: </li>
+                            <li class="red offset-bullet">Plan to read: </li>
+                        </ul> 
+                        <ul class="no-bullet">
+                            <li class="offset-bullet">{{{stat.reading}}}</li>
+                            <li class="offset-bullet">{{{stat.completed}}}</li>
+                            <li class="offset-bullet">{{{stat.plan}}}</li>
+                        </ul> 
+                    </div>
+                </div>
+            </div>
+
+            {{!-- Spacer (for phone) --}}
+            <div class="grid-item visible-flex@p hidden@l size-12@p"></div>
+
+            {{!-- [6] Last Book Updates --}}
+            <div style="padding-top:0;" class="grid-item size-12@p size-4@l">
+                <div class="grid-container">
+                    <div class="grid-item size-12@p size-12@l padding-xsmall">
+                        <h3 class="textbox text-align-center color-white color-bg-dark-grey padding-small no-margin-top" style="font-size: 1.1em;">Last Book Updates</h3>
+                    </div>
+                    {{!-- Sample Book 1 --}}
+                    <div style="padding-top:30px;" class="grid-item padding-xsmall book-item book-item-small">
+                        <img src="https://ca-times.brightspotcdn.com/dims4/default/c5fcd84/2147483647/strip/true/crop/2045x1150+0+0/resize/1200x675!/format/webp/quality/80/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2F49%2F2a%2Fb869ce6c4488edee8556396ec6e9%2Fla-1554939303-nqauifl1ot-snap-image" alt="Sample Book 1" class="book-cover book-cover-small"/>
+                    </div>
+                    <div style="padding-top:30px; padding-left:15px;" class="grid-item padding-xsmall text-beside-book-cover-small">
+                        <p>Book1</p>
+                        <p class="text-small">1 Hour ago</p>
+                        <p class="text-small">Reading 64/89 - Scored 7</p>
+                    </div>
+                    {{!-- Sample Book 2 --}}
+                    <div style="padding-top:15px;" class="grid-item padding-xsmall book-item book-item-small">
+                        <img src="https://static01.nyt.com/images/2022/04/04/multimedia/15ai-nocode/15ai-nocode-superJumbo.gif?quality=75&auto=webp" alt="Sample Book 2" class="book-cover book-cover-small"/>
+                    </div>
+                    <div style="padding-top:15px; padding-left:15px;" class="grid-item padding-xsmall text-beside-book-cover-small">
+                        <p>Book2</p>
+                        <p class="text-small">10 Days ago</p>
+                        <p class="text-small">Reading 34/100 - Scored 9</p>
+                    </div>
+                    {{!-- Sample Book 3 --}}
+                    <div style="padding-top:15px;" class="grid-item padding-xsmall book-item book-item-small">
+                        <img src="http://smartmobilestudio.com/wp-content/uploads/2012/06/leather-book-preview.png" alt="Sample Book 3" class="book-cover book-cover-small"/>
+                    </div>
+                    <div style="padding-top:15px; padding-left:15px;" class="grid-item padding-xsmall text-beside-book-cover-small">
+                        <p>Book3</p>
+                        <p class="text-small">1 Month ago</p>
+                        <p class="text-small">Reading 46/200 - Scored 10</p>
+                    </div>
+                </div>
+            </div>
+
+            {{!-- Spacer (right) --}}
+            <div class="grid-item visible-flex@l hidden@p size-1@l"></div>
+
+        </div>
+    </div>
+</div>

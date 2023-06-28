@@ -1,0 +1,54 @@
+<!-- Trending Section -->
+<section class = "trendingSection">
+
+    <!-- Trending Section Header -->
+    <div class="trendingHeader">
+        <span class="trendingText">
+            <h1>Trending Books</h1>
+        </span>
+                        
+        <a href="/trending" class="viewMore">View More</a>
+    </div>
+    <div class="horizontal_line"></div>
+
+    <!-- List of Trending Books -->
+    <ul class="homePageBookDisplay">
+        {{#each trending}}
+            <a href="/book/{{this._id}}">
+            <div class="homePageBookDiv">
+                <div class="homePageBookCover">
+                    <img src="{{this.image}}" alt = ""/>
+                </div>
+                <a href="/book/{{this._id}}" class="homePageBookTitle">{{this.bookTitle}}</a>
+            </div>
+            </a>
+        {{/each}}
+</section>
+
+<!-- Recent Books Section -->
+<section class = "recentSection">
+
+    <!-- Recent Section Header -->
+    <div class="recentHeader">
+        <span class="recentText">
+            <h1>Recently Viewed Books</h1>
+        </span>
+        
+        <a href="/recent" class="viewMore">View More</a>
+    </div>
+    <div class="horizontal_line"></div>
+
+    <!-- List of Recently Viewed Books -->
+    <ul class="homePageBookDisplay">
+        {{#each recent}}
+            <a href="/book/{{this._id}}">
+            <div class="homePageBookDiv">
+                <div class="homePageBookCover">
+                    <img src="{{this.image}}" alt = ""/>
+                </div>
+                <a href="/book/{{this.bookId}}" class="homePageBookTitle">{{this.bookTitle}}</a>
+            </div>
+            </a>
+        {{/each}}
+    </ul>
+</section>

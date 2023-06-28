@@ -1,0 +1,28 @@
+[1] In userController.js:
+
+--- add function
+    const renderBookRequestFailure = async (req, res) => {
+        await loadBooks()
+        if(hasQuery(req)) { redirectToSearchResults(req, res); return } 
+        if(isLoggedIn() == false) { redirectToLogin(res); return}
+
+        curUser = await User.findById(global.loggedAs)
+
+        if(enteredBookReq(req)) {
+            createBookReq(curUser.username, req.query.bookTitle, req.query.author, req.query.description, 
+                req.query.bookSellerLink, req.query.image)
+            res.redirect('/bookRequestSuccess')
+        }
+
+        res.render('bookRequestFailure.hbs')
+    }
+
+--- In module.exports, add
+    renderBookRequestFailure,
+
+
+
+[2] In userRouter.js:
+
+--- add route
+    userRouter.get('/bookRequestFailure', userController.renderBookRequestFailure)

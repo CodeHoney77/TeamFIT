@@ -1,0 +1,52 @@
+[1] In userController.js:
+
+--- add function
+    const renderTrendingBooks = async (req, res) => {
+        await loadBooks()
+        if(hasQuery(req)) { redirectToSearchResults(req, res); return } 
+
+        res.render('trending.hbs')
+    }
+
+--- In const renderHomePage
+    // Change the trending books and recent books (these are temporary)
+    let tempTrending = global.books.slice(0, Math.min(await Book.count(), 6))
+    let tempRecent = global.books.slice(0, Math.min(await Book.count(), 6))
+    res.render("homePage.hbs", {
+        trending: tempTrending,
+        recent: tempRecent 
+    })
+
+--- In module.exports, add
+    renderTrendingBooks,
+
+
+
+[2] In userRouter.js:
+
+--- add route
+    userRouter.get('/trending', userController.renderTrendingBooks)
+
+
+
+[3] In userTaskBar.hbs:
+
+--- add trending menu in Laptop userTaskBar
+    <!-- TaskBar items -->
+    <ul id="nav_bar">
+        <li><a href="/"><img src="../../icons/logo.svg"/></a></li>
+        <li><a href="/searchResults">Books</a></li>
+        <li><a href="/trending">Trending</a></li>
+        <li><a href="/recent">Recent</a></li>
+        <li><a href="/admin">Admin</a></li>
+    </ul>
+
+--- add trending menu in Phone userTaskBar
+    <!-- TaskBar items -->
+    <ul class="panel-sidebar-menu">
+        <li><a href="/"><img src="../../icons/logo.svg"/></a></li>
+        <li><a href="/searchResults">Books</a></li>
+        <li><a href="/trending">Trending</a></li>
+        <li><a href="/recent">Recent</a></li>
+        <li><a href="/admin">Admin</a></li>
+    </ul>

@@ -1,0 +1,27 @@
+<!-- The search box -->
+        <form action="#">
+            <input name="s" class="searchResultInput" type="text" placeholder="{{query}}">
+        </form>
+        
+        <a href="/bookRequest" class="searchResultAddNewBook">Book not here?</a>
+
+        
+        <h1 class="searchResultSearchedFor">Showing results for "{{query}}"</h1>
+
+
+
+        {{#each books}}
+        <div class="searchResultDiv">
+        <div class="searchResultBookCoverDiv"><img src = "{{this.image}}" /></div>
+
+        <div class="searchResultBookInfo">
+            <h2><a href="/book/{{this.bookId}}" style='text-decoration:none; color:black'>{{this.bookTitle}}</a></h2>
+
+            <p class="searchResultBookInfoText">
+                {{this.description}}
+            </p>
+            <p class="searchResultBookInfoText searchResultBookInfoTextRatings">Rating: {{this.averageRating}}/10            Reviews: Mostly Positive</p>
+        </div>
+        </div>
+
+        {{/each}}

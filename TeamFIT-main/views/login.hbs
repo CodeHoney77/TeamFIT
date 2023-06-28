@@ -1,0 +1,45 @@
+<div class="grid-container justify-content-center" style="min-height: calc(100vh);">
+    <div class="grid-item size-12@p size-6@l">
+        <form action="#">
+            <div class="grid-container">
+
+                {{!-- Welcome header --}}
+                <div class="grid-item size-12@p size-12@l">
+                    <h1 class="text-align-center text-big-header">Welcome to MyBookList!</h1>
+                </div>
+                <div class="grid-item size-12@p size-12@l horizontal-line"></div>
+
+                {{!-- Username and Password fields --}}
+                <div style="padding-left:0; padding-right:0;" class="grid-item size-12@p size-12@l">
+                    <label>Username</label>
+                    <input name="username" type="text"/>
+                </div>
+                
+                <div style="padding-left:0; padding-right:0;" class="grid-item size-12@p size-12@l">
+                    <label>Password</label>
+                    <input name="password" type="password"/>
+                </div>
+
+                {{!-- Log In button --}}
+                <div style="padding-left:0; padding-right:0;" class="grid-item size-12@p size-12@l">
+                    <button class="btn btn-large btn-primary full-width" type="submit"> Log In</button>
+                </div>
+
+                {{!-- Spacer --}}
+                <div style="padding-bottom:0;" class="grid-item size-12@l"></div>
+
+                {{!-- Helper links for account creation or forgot password --}}
+                <div style="display:flex; padding-top:0;" class="grid-item size-12@p size-12@l">
+                    <div style="padding-top:0; padding-right:20px;" class="grid-item size-12@p size-6@l text-align-right">
+                        <a href="/signup" class="color-primary">Create account?</a>
+                    </div>
+                    <div class="vertical-line-small"></div>
+                    <div style="padding-top:0; padding-left:20px;" class="grid-item size-12@p size-6@l text-align-left">
+                        <a href="#" class="color-primary">Forgot Password?</a>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>

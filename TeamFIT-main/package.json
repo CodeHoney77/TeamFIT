@@ -1,0 +1,29 @@
+{
+  "name": "teamfit",
+  "version": "1.0.0",
+  "description": "[COMP30022] IT Project",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kaydee-tee/TeamFIT.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kaydee-tee/TeamFIT/issues"
+  },
+  "homepage": "https://github.com/kaydee-tee/TeamFIT#readme",
+  "dependencies": {
+    "date-fns": "^2.29.3",
+    "express": "^4.18.1",
+    "express-handlebars": "^6.0.6",
+    "mongoose": "^6.5.5"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.2"
+  }
+}

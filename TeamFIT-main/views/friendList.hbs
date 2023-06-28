@@ -1,0 +1,52 @@
+<div class="grid-container justify-content-center">
+    <div class="grid-item size-12@p size-11@l">
+        <div class="grid-container justify-content-center">
+            
+            {{!-- Friendlist header --}}
+            <div class="grid-item size-12@p size-12@l">
+                <h1 class="text-align-center text-big-header">My Friends!</h1>
+            </div>
+
+            {{!-- Spacer (for laptop) --}}
+            <div class="grid-item visible-flex@l hidden@p size-12@p size-12@l"></div>
+
+            {{!-- Horizontal Line --}}
+            <div style="margin-bottom:10px;" class="grid-item size-12@p size-12@l horizontal-line"></div>
+            
+            {{!-- List friends --}}
+            <div style="position:relative; left:-30px;" class="grid-item size-12@p size-12@l">
+
+                {{!-- There are friends to display --}}
+                {{#each friends}} 
+                    <div class="grid-container">
+                        {{!-- [1] Username + Profile Pic + Add/Remove Friend buttons --}}
+                        <div class="grid-item size-12@p size-2@l text-align-center">
+                            <h2 style="margin-top:0; padding-bottom: 15px;" >{{this.username}}</h2>
+                            <a href="/profilePage/{{this._id}}"><img class="circle-display-small" src="{{image}}" onerror="this.src='../../icons/profilepictureplaceholder.png';" alt="Profile Picture"/></a>
+                            <a href="/profileBookList/{{this._id}}"><button type="button" class="btn btn-primary full-width margin-top-xsmall">View Book List</button></a>
+                            <a href="/friendList/{{this._id}}"><button type="button" class="btn btn-primary full-width margin-top-xsmall">View Friend List</button></a>
+                            <a href="/friendList?rf=y&id={{this._id}}"><button class="btn btn-red full-width margin-top-xsmall">Remove Friend</button></a>
+                        </div>
+
+                        {{!-- [2] Bio + Liked Genres + Save Profile button--}}
+                        <div class="grid-item size-12@p size-10@l">
+                            <h3 class="textbox text-align-center color-white color-bg-dark-grey no-margin-top" style="font-size: 1.1em;">Bio</h3>
+                            <textarea style="resize: none; margin-top:10px;" name="bio" class="readonly-input text-medium" rows="8" readonly>{{{this.bio}}}</textarea>
+                            <p class="textbox text-align-center">Liked Genres: Sci-Fi, Fiction, Comedy</p>
+                        </div>
+
+                        {{!-- Horizontal Line thin --}}
+                        <div style="position:relative; left:15px; margin-bottom:10px;" class="grid-item size-12@p size-12@l horizontal-line-thin"></div>
+                    </div>
+                {{/each}}
+            </div>
+
+        </div>
+
+        {{!-- Back Button --}}
+        <div class="grid-item size-12@p size-12@l text-align-right">
+            <button type="button" class="btn" onclick="history.back()">Back</button>
+        </div>
+
+    </div>
+</div>

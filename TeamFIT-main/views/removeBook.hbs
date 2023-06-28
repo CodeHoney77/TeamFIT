@@ -1,0 +1,87 @@
+<div class="grid-container justify-content-center">
+    <div class="grid-item size-12@p size-11@l">
+        <div class="grid-container justify-content-center">
+
+            {{!-- Remove a book header --}}
+            <div class="grid-item size-12@p size-12@l">
+                <h1 class="text-align-center text-big-header">Remove Books</h1>
+            </div>
+
+            {{!-- Search bar --}}
+            <div style="padding-left:0; padding-right:0;" class="grid-item size-12@p size-12@l search full-width">
+                <form action="#">
+                    <input name="ss" type="text" placeholder="{{query}}" style="max-width: 100%; width: 100%-60px;"/>
+                    <button type="submit">
+                        <img src="../icons/search.svg" alt="Search"/>
+                    </button>
+                </form>
+            </div>
+
+            {{!-- Horizontal Line --}}
+            <div class="grid-item size-12@p size-12@l horizontal-line"></div>
+
+            {{!-- Showing results for header --}}
+            <div style="position:relative; left:-15px;" class="grid-item size-12@p size-12@l">
+                <h1>Showing results for "{{query}}"</h1>
+            </div>
+            
+            {{!-- List search results --}}
+            <div style="position:relative; left:-30px;" class="grid-item size-12@p size-12@l">
+                {{#each books}} 
+                    <div class="grid-container">
+
+                        {{!-- Book Cover image --}}
+                        <div class="grid-item book-item">
+                            <a href="/book/{{this._id}}">
+                                <img src="{{this.image}}" alt="{{this.bookTitle}}" class="book-cover"/>
+                            </a>
+                        </div>
+
+                        {{!-- Book Info (for laptop) --}}
+                        <div class="grid-item visible-flex@l hidden@p text-beside-book-cover align-bottom-parent">
+                            <div class="padding-large">
+                                <a href="/book/{{this._id}}">
+                                    <h2>{{this.bookTitle}}</h2>
+                                    <br>
+                                    <p>Author: {{this.author}}</p>
+                                    <p>Description: {{this.description}}</p>
+                                    <div class="align-bottom-child" style="bottom: var(--large-padding);">
+                                        <p>Tags: {{#each this.tags}}{{this.tag_name}}, {{/each}}</p>
+                                        <p>Rating: {{this.averageRating}}/10</p>
+                                        <p>Reviews: Mostly Positive</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                        {{!-- Book Info (for phone) --}}
+                        <div class="grid-item visible-flex@p hidden@l size-12@p full-width" style="padding-top: 0px;">
+                            <a href="/book/{{this._id}}">
+                                <h2>{{this.bookTitle}}</h2>
+                                <p>Author: {{this.author}}</p>
+                                <p>Description: {{this.description}}</p>
+                                <p>Tags: {{#each this.tags}}{{this.tag_name}}, {{/each}}</p>
+                                <p>Rating: {{this.averageRating}}/10</p>
+                                <p>Reviews: Mostly Positive</p>
+                            </a>
+                        </div>
+
+                        <div style="position:relative; left:15px; padding-bottom:15px;" class="align-right text-align-right">
+                            <a href="/admin/deleteBook/{{this._id}}"><button class="btn margin-xxsmall color-red">Remove Book</button></a>
+                        </div>
+
+                        {{!-- Horizontal Line thin --}}
+                        <div style="position:relative; left:15px;" class="grid-item size-12@p size-12@l horizontal-line-thin"></div>
+                        
+                    </div>
+                {{/each}}
+            </div>
+
+            {{!-- Back Button --}}
+            <div class="grid-item size-12@p size-12@l text-align-right">
+                <button class="btn" onclick="history.back()">Back</button>
+            </div>
+
+        </div>
+    </div>
+</div>

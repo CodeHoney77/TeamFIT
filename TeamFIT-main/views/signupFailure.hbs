@@ -1,0 +1,56 @@
+<div class="grid-container justify-content-center" style="min-height: calc(100vh);">
+    <div class="grid-item size-12@p size-6@l">
+        <form action="#">
+            <div class="grid-container">
+
+                {{!-- Sign Up header --}}
+                <div class="grid-item size-12@p size-12@l">
+                    <h1 class="text-align-center text-big-header">Sign Up to MyBookList!</h1>
+                    <p class="text-align-center padding-small">Please fill in this form to create an account.</p>
+                </div>
+                <div class="grid-item size-12@p size-12@l horizontal-line"></div>
+
+                {{!-- Error message --}}
+                <div style="padding:0;" class="grid-item size-12@p size-12@l">
+                    <p class="text-align-center color-red">Username is already taken. Please try again with another
+                        username.</p>
+                </div>
+
+                {{!-- Username and Password fields --}}
+                <div style="padding-left:0; padding-right:0;" class="grid-item size-12@p size-12@l">
+                    <label for="username"><b>Username</b></label>
+                    <input name="username" type="text" required />
+                </div>
+                <div style="padding-left:0; padding-right:0;" class="grid-item size-12@p size-12@l">
+                    <label for="password"><b>Password</b></label>
+                    <input name="password" type="password" required />
+                </div>
+
+                {{!-- Cancel and Sign Up buttons --}}
+                {{!-- Buttons for laptop display --}}
+                <div class="grid-item visible-flex@l hidden@p size-12@l">
+                    <div class="grid-item size-6@p size-6@l">
+                        <a href="/login"><button class="btn btn-large full-width" type="button">Cancel</button></a>
+                    </div>
+                    <div class="grid-item size-6@p size-6@l">
+                        <button class="btn btn-large btn-primary full-width" type="submit">Sign Up</button>
+                    </div>
+                </div>
+                {{!-- Buttons for phone display --}}
+                <div class="grid-item visible-flex@p hidden@l size-12@p">
+                    <div class="grid-container">
+                        <div class="grid-item size-12@p size-12@l">
+                            <button class="btn btn-large btn-primary full-width" type="submit">Sign Up</button>
+                        </div>
+                        <div class="grid-item size-12@p size-12@l">
+                            <a href="/login"><button class="btn btn-large full-width" type="button">Cancel</button></a>
+                        </div>
+                    </div>
+                </div>
+
+                {{!-- Spacer --}}
+                <div class="grid-item size-12@l"></div>
+            </div>
+        </form>
+    </div>
+</div>
